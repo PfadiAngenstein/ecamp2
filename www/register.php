@@ -23,7 +23,7 @@
 	include($lib_dir . "/functions/error.php");
 	require_once("./lib/PHPTAL.php");
 	
-	require_once( "./lib/recaptchalib.php" );
+	// require_once( "./lib/recaptchalib.php" );
 	
 	
 	
