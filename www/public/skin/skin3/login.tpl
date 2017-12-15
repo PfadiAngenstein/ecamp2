@@ -84,19 +84,11 @@
           <span tal:content="structure MSG">TEXT...</span>
         </div>
         
+        <!--
         <div class="register bgcolor_content content_border_fit">
-        	<b>Willkommen beim neuen eCamp</b>
-        	<br />
-        	<br />
-        	Es konnten keine Registrationen des alten eCamps übernommen werden.
-        	Es müssen sich also alle Benutzer neu registrieren.
-        	<br />
-        	<br />
-        	Wer noch ein Lager im alten eCamp laufen hat, kann sich weiterhin unter folgender Adresse anmelden:
-        	<br />
-        	<br />
-        	<a href="http://oldecamp.pfadiluzern.ch">http://oldecamp.pfadiluzern.ch</a>
+        	<b>Willkommen bei eCamp</b>
         </div>
+        -->
         
         <div class="login bgcolor_content content_border_fit">
         	<form action="login.php" method="post">
