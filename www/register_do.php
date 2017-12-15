@@ -23,7 +23,7 @@
 	include($lib_dir . "/functions/mail.php");
 	db_connect();
 	
-	require_once( "./lib/recaptchalib.php" );
+	// require_once( "./lib/recaptchalib.php" );
 	
 	
 	
@@ -31,7 +31,7 @@
 	//	CHECK ALL INPUTS:
 	// ===================
 	
-	
+	/*
 	$resp = recaptcha_check_answer ($GLOBALS[captcha_prv], $_SERVER["REMOTE_ADDR"], 
 									$_REQUEST["recaptcha_challenge_field"],
 									$_REQUEST["recaptcha_response_field"]	);
@@ -39,7 +39,7 @@
 	
 	if (!$resp->is_valid)
 	{	header( 'location: register.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
-	
+	*/
 	if( $_REQUEST[ 'Login' ] == "" )
 	{	header( 'location: register.php?msg=eMail - Adresse muss angegeben werden!' );	die();	}
 	
