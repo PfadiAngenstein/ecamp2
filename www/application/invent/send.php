@@ -21,7 +21,7 @@
 	
 	$email = mysql_escape_string( $_REQUEST['email'] );
 	$from  = mysql_escape_string( $_REQUEST['from']  );
-	$text  = $_REQUEST['text'];
+	$text  = nl2br($_REQUEST['text']);
 	
 	if( !filter_var( $email, FILTER_VALIDATE_EMAIL) )
 	{
