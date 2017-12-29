@@ -23,13 +23,13 @@
 	include($lib_dir . "/functions/mail.php");
 	db_connect();
 	
-	require_once( "./lib/recaptchalib.php" );
+	// require_once( "./lib/recaptchalib.php" );
 	
 	
 	
-	$resp = recaptcha_check_answer ($GLOBALS[captcha_prv], $_SERVER["REMOTE_ADDR"], 
-									$_REQUEST["recaptcha_challenge_field"],
-									$_REQUEST["recaptcha_response_field"]	);
+	// $resp = recaptcha_check_answer ($GLOBALS[captcha_prv], $_SERVER["REMOTE_ADDR"], 
+	// 								$_REQUEST["recaptcha_challenge_field"],
+	//								$_REQUEST["recaptcha_response_field"]	);
 	
 	if (!$resp->is_valid)
 	{	header( 'location: reminder.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
