@@ -72,11 +72,11 @@
 	                    
 	                    <tr><td>E-Mail:</td><td><input tabindex="1" name="Login" type="text" /></td></tr>
 	                    <tr height="10"><td> </td></tr>
-	                    
+	                    <!--
 	                    <tr><td colspan="2">
 	                    		<tal:block content="structure captcha" />
 	                    </td></tr>
-	                    
+	                    -->
 	                    <tr><td colspan="2" align="right"><input tabindex="7" type="submit" value="Abschicken" /></td></tr>
 	                    <tr><td> </td></tr>
 	                    
