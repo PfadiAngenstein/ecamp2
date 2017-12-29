@@ -31,8 +31,8 @@
 	// 								$_REQUEST["recaptcha_challenge_field"],
 	//								$_REQUEST["recaptcha_response_field"]	);
 	
-	if (!$resp->is_valid)
-	{	header( 'location: reminder.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
+	// if (!$resp->is_valid)
+	// {	header( 'location: reminder.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
 	
 	
 	
