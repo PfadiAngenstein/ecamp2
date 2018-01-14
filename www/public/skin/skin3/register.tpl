@@ -85,11 +85,11 @@
 	                    <tr><td>Vorname:</td><td><input tabindex="5" name="firstname" type="text" /></td></tr>
 	                    <tr><td>Nachname:</td><td><input tabindex="6" name="surname" type="text" /></td></tr>
 	                    <tr height="10"><td> </td></tr>
-	                    
+	                    <!--
 	                    <tr><td colspan="2">
 	                    		<tal:block content="structure captcha" />
 	                    </td></tr>
-	                    
+	                    -->
 	                    <tr><td colspan="2" align="right"><input tabindex="7" type="submit" value="Register" /></td></tr>
 	                    <tr><td> </td></tr>
 	                    

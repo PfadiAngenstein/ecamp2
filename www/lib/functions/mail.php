@@ -22,13 +22,15 @@
 require_once $GLOBALS[pear_dir]."Mail.php";
 
 function ecamp_send_mail($to, $subject, $body){
-	$from = 'eCamp <ecamp@pfadiluzern.ch>';
-	$to = '<' . $to . '>';
+	$from 	= 'eCamp <ecamp@pfadiangenstein.ch>';
+	$to 	= '<' . $to . '>';
 
 	$headers = array(
-	    'From' => $from,
-	    'To' => $to,
-	    'Subject' => $subject
+	    'From' 			=> $from,
+	    'To'			=> $to,
+	    'Reply-To'		=> "webmaster@pfadiangenstein.ch",
+	    'Subject'		=> $subject,
+	    'Content-Type'	=> 'text/html; charset=UTF-8'
 	);
 
 	$smtp = Mail::factory('smtp', $GLOBALS['smtp-config']);

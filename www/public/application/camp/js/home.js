@@ -42,25 +42,38 @@ window.addEvent('load', function()
 					], { 'single_save': true, 'args': args.set( 'field', 'ca_coor' ), 'min_level': 50 } );
 	
 
+	// POIs to show on different zoom levels
+	var poiGroupsZoomedIn 	= "zug,haltestelle,bergbahn,feuerstelle,bad,spital,apotheke,berg,pass,wasserfall,tankstelle";
+	var poiGroupsZoomedOut 	= "zug,bergbahn,feuerstelle,bad,spital,apotheke,berg,pass,wasserfall,tankstelle";
+
+	var Map = new SearchChMap({
+		controls: "zoom,type",
+		zoom: 4,					// possible: 0.25,0.5,1,2,4,8,16,...,256
+		poigroups: poiGroupsZoomedIn
+	});
 	
-	var Map = new SearchChMap({ controls: "zoom", zoom: 2, circle:false, autoload: false });	
-	var poi = new SearchChPOI({ html:"Lagerplatz" });
-	Map.addPOI( poi );
 	Map.disable("clickzoom");
-	
+
 	if( ! auth.access( 50 ) )
 	{	Map.disable("all");	}
-	
-	
+
+	var poi = new SearchChPOI({ 
+		html: "Lagerplatz",
+		icon: "public/global/img/map_icon.png",
+		width: 30,
+		height: 30
+	});
+
 	if( coor.list[0].show_input.get('value') )
 	{
 		c1 = coor.list[0].show_input.get('value') + 
 			 coor.list[1].show_input.get('value');
 		c2 = coor.list[2].show_input.get('value') +
 			 coor.list[3].show_input.get('value');
-		poi.set({ center: [ c1, c2 ] });
 		
-		Map.set({ center: [ c1, c2 ] });
+		poi.set({ center: [c1,c2] });
+		Map.addPOI( poi );
+		Map.set({ center: [c1,c2], marker: false });	// no red marker on lp (icon of POI already there)
 		Map.init();
 	}
 	else
@@ -71,50 +84,54 @@ window.addEvent('load', function()
 			Map.init();
 		}
 	}
-	
-	
-	Map.addEventListener( 'change', function(e)
+
+	Map.addEventListener( 'zoomend', function( e )
 	{
-		if( Map.get( 'center' ).capitalize() != city.show_input.get( 'value') ) 
+		if(Map.get( 'zoom' ) <= 4)
 		{
-			if( Map.get('center').capitalize() != Map.get('center') )
-			{
-				city.edit_input.set( 'value', Map.get('center').capitalize() );
-				city.save();
-			}
+			Map.set({ poigroups: poiGroupsZoomedIn });
+			Map.init();
+		} else if(Map.get( 'zoom' ) > 4 && Map.get( 'zoom' ) <= 16) {
+			Map.set({ poigroups: poiGroupsZoomedOut });
+			Map.init();
+		} else if(Map.get( 'zoom' ) > 16) {
+			Map.set({ poigroups: 'default' });
+			Map.init();
 		}
 	});
-	
-	
+
+
 	Map.addEventListener( 'mouseclick', function( e )
 	{
-		mx1 = (e.mx / 1000).floor();
-		mx2 = e.mx - mx1 * 1000;
-		
-		my1 = (e.my / 1000).floor();
-		my2 = e.my - my1 * 1000;
-		
-		$popup.popup_yes_no(
-			"Neue Lagerplatz-Koordinaten", 
-			"Sollen die neuen Lagerplatz-Koordinaten <br /> ( " + mx1 + "." + mx2 + " / " + my1 + "." + my2 + " ) gespeichert werden?",
-			function()
-			{
-				coor.list[0].edit_input.set( 'value', mx1 );
-				coor.list[1].edit_input.set( 'value', mx2 );
-				coor.list[2].edit_input.set( 'value', my1 );
-				coor.list[3].edit_input.set( 'value', my2 );
-				
-				poi.set({ center: [ e.mx, e.my ] });
-				Map.set({ center: [ e.mx, e.my ] });
+		console.log(e);
+		if(e.target._popup == null) {
+			mx1 = (e.mx / 1000).floor();
+			mx2 = e.mx - mx1 * 1000;
+			
+			my1 = (e.my / 1000).floor();
+			my2 = e.my - my1 * 1000;
+			
+			$popup.popup_yes_no(
+				"Neue Lagerplatz-Koordinaten", 
+				"Sollen die neuen Lagerplatz-Koordinaten <br /> ( " + mx1 + "." + mx2 + " / " + my1 + "." + my2 + " ) gespeichert werden?",
+				function()
+				{
+					coor.list[0].edit_input.set( 'value', mx1 );
+					coor.list[1].edit_input.set( 'value', mx2 );
+					coor.list[2].edit_input.set( 'value', my1 );
+					coor.list[3].edit_input.set( 'value', my2 );
+					
+					poi.set({ center: [ e.mx, e.my ] });
+					Map.set({ center: [ e.mx, e.my ], marker: false });
 
-				coor.save();
-				
-				$popup.hide_popup();
-			},
-			function(){	$popup.hide_popup();	}, 
-			"popup_yes_button"
-		);
-		
+					coor.save();
+					
+					$popup.hide_popup();
+				},
+				function(){	$popup.hide_popup();	}, 
+				"popup_yes_button"
+			);
+		}
 	});
 	
 	

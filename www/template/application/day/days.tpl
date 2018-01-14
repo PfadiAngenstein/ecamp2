@@ -29,7 +29,7 @@
 
 <br />
 <b>Roter Faden (Tagesablauf):</b><br>
-<div class="hidden" id="busy_story" name="busy_story"><img border="0" src="img/busy_32.gif" /></div>
+<div class="hidden" id="busy_story" name="busy_story"><img border="0" src="public/global/img/wait.gif" /></div>
 
 <form id="show_story"><br />
 <div style="border: dotted 1px; cursor:pointer;"  onClick="javascript:ask('story')">
@@ -57,7 +57,7 @@
 <br>
 
 <b>Notizen:</b><br>
-<div class="hidden" id="busy_notes" name="busy_notes"><img border="0" src="img/busy_32.gif" /></div>
+<div class="hidden" id="busy_notes" name="busy_notes"><img border="0" src="public/global/img/wait.gif" /></div>
 
 <form id="show_notes"><br />
 <div style="border: dotted 1px; cursor:pointer;"  onClick="javascript:ask('notes')">

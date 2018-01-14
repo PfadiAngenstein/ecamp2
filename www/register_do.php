@@ -23,7 +23,7 @@
 	include($lib_dir . "/functions/mail.php");
 	db_connect();
 	
-	require_once( "./lib/recaptchalib.php" );
+	// require_once( "./lib/recaptchalib.php" );
 	
 	
 	
@@ -31,7 +31,7 @@
 	//	CHECK ALL INPUTS:
 	// ===================
 	
-	
+	/*
 	$resp = recaptcha_check_answer ($GLOBALS[captcha_prv], $_SERVER["REMOTE_ADDR"], 
 									$_REQUEST["recaptcha_challenge_field"],
 									$_REQUEST["recaptcha_response_field"]	);
@@ -39,7 +39,7 @@
 	
 	if (!$resp->is_valid)
 	{	header( 'location: register.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
-	
+	*/
 	if( $_REQUEST[ 'Login' ] == "" )
 	{	header( 'location: register.php?msg=eMail - Adresse muss angegeben werden!' );	die();	}
 	
@@ -112,13 +112,17 @@
 	// ===========================
 	
 	
- 	$text = "eCamp - Willkommen \n\n
-Um dich bie eCamp einloggen zu können, musst du deinen Account aktivieren.
-Zu diesem Zweck musst du nachfolgendem Link folgen:
-\n\n
-" . $GLOBALS[base_uri] . "activate.php?user_id=$user_id&login=$login&acode=$acode
-\n\n
- ";
+	$link = $GLOBALS[base_uri] . "activate.php?user_id=$user_id&login=$login&acode=$acode";
+
+ 	$text = "
+ 		eCamp - Willkommen<br>
+ 		<br>
+ 		Um dich bie eCamp einloggen zu können, musst du deinen Account aktivieren.<br>
+ 		Zu diesem Zweck musst du nachfolgendem Link folgen:<br>
+ 		<br>
+ 		<br>
+ 		<a href=\"$link\">Account aktivieren</a>
+ 	";
 
 	ecamp_send_mail($login, "eCamp - Willkommen", $text);
  	// mail( $login, "eCamp - Willkommen", $text, "From: eCamp Pfadi Luzern <ecamp@pfadiluzern.ch>" );

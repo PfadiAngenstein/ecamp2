@@ -23,7 +23,7 @@
 	include($lib_dir . "/functions/error.php");
 	require_once("./lib/PHPTAL.php");
 	
-	require_once( "./lib/recaptchalib.php" );
+	// require_once( "./lib/recaptchalib.php" );
 	
 	
 	
@@ -40,7 +40,7 @@
 		$html->set( 'MSG', mysql_escape_string( $_REQUEST[ 'msg' ] ) );
 	}
 	
-	$html->set( 'captcha' ,recaptcha_get_html( $GLOBALS[captcha_pub], null, true ) );
+	// $html->set( 'captcha' ,recaptcha_get_html( $GLOBALS[captcha_pub], null, true ) );
 
 	
 	echo $html->execute();

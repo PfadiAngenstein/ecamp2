@@ -23,16 +23,16 @@
 	include($lib_dir . "/functions/mail.php");
 	db_connect();
 	
-	require_once( "./lib/recaptchalib.php" );
+	// require_once( "./lib/recaptchalib.php" );
 	
 	
 	
-	$resp = recaptcha_check_answer ($GLOBALS[captcha_prv], $_SERVER["REMOTE_ADDR"], 
-									$_REQUEST["recaptcha_challenge_field"],
-									$_REQUEST["recaptcha_response_field"]	);
+	// $resp = recaptcha_check_answer ($GLOBALS[captcha_prv], $_SERVER["REMOTE_ADDR"], 
+	// 								$_REQUEST["recaptcha_challenge_field"],
+	//								$_REQUEST["recaptcha_response_field"]	);
 	
-	if (!$resp->is_valid)
-	{	header( 'location: reminder.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
+	// if (!$resp->is_valid)
+	// {	header( 'location: reminder.php?msg=Bitte CAPTCHA richtig abschreiben!' );	die();	}
 	
 	
 	
@@ -79,11 +79,17 @@
 	// =========================
 	
 	
- 	$text = "eCamp - Passwort ändern \n\n
-Um das Passwort zu ändern, musst du dem nachfolgendem Link folgen:
-\n\n
-" . $GLOBALS[base_uri] . "pwreset.php?user_id=$user_id&login=$login&acode=$acode
-\n\n";
+	$link = $GLOBALS[base_uri] . "pwreset.php?user_id=$user_id&login=$login&acode=$acode";
+
+ 	$text = "
+	 	eCamp - Passwort ändern<br>
+	 	<br>
+	 	<br>
+	 	Um das Passwort zu ändern, musst du dem nachfolgendem Link folgen:<br>
+	 	<br>
+	 	<br>
+	 	<a href=\"$link\">Passwort ändern</a>
+ 	";
 
 	ecamp_send_mail($login, "eCamp - Passwort ändern", $text);
 	//mail( $login, "eCamp - Passwort ändern", $text, "From: eCamp Pfadi Luzern <ecamp@pfadiluzern.ch>" );

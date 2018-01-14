@@ -27,7 +27,8 @@
 	
 	
 	$feedback 	= utf8_decode(mysql_real_escape_string($_REQUEST['feedback']));
-	$feedback = preg_replace("/\\\\n/","\n",$feedback);
+	$feedback 	= preg_replace("/\\\\n/","\n",$feedback);
+	$feedback 	= nl2br($feedback);
 	
 	$type = mysql_real_escape_string($_REQUEST[type]);
 	
