@@ -1,3 +1,9 @@
+/* Prevent horizontal scrollbars/resizing */
+textarea {
+	box-sizing: border-box;
+	resize: vertical;
+}
+
 div.content_border_full
 {	min-height: 520px;	}
 

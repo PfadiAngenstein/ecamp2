@@ -6,10 +6,10 @@
         <span metal:fill-slot="border_content" tal:omit-tag="">
             <div class="d_program_table" >
                 <div class="d_program_row">
-                    <div class="d_program_cell_time"><b>Wann</b></div>
-                    <div class="d_program_cell_content"><b>Was</b></div>
-                    <div class="d_program_cell_resp"><b>Wer</b></div>
-                    <div class="d_program_cell_option"><b>Option</b></div>
+                    <div class="d_program_cell_time"><b>Zeit</b></div>
+                    <div class="d_program_cell_content"><b>Programm</b></div>
+                    <div class="d_program_cell_resp"><b>Mat/Auftritte</b></div>
+                    <div class="d_program_cell_option"><b>Aktion</b></div>
                 </div>
             </div>
             <ul id="d_program_sort" type="none" class="d_program_sort">
