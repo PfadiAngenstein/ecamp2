@@ -38,6 +38,7 @@
 	
 	$html->setEncoding('UTF-8');
 	$html->set('SHOW_MSG', false);
+	$html->set('LOGIN_TYPE', (($GLOBALS[auth] == "midata") ? "MiData" : "Lokal"));
 	
 	
 	session_start();
@@ -51,11 +52,111 @@
 	
 	if($_POST['Form'] == "Login")
 	{
-	    include($lib_dir . "/mysql.php");
+		include($lib_dir . "/mysql.php");
 		db_connect();
-		
-		// Verhindern von injection!!!
+
+		// Prevent SQL-Injection
 		$_POST['Login'] = mysql_real_escape_string($_POST['Login']);
+		
+		if($GLOBALS[auth] == "midata")
+		{
+			// Get MiData Auth-Token
+			$curl = curl_init();
+			curl_setopt_array($curl, array(
+				CURLOPT_URL 			=> "https://db.scout.ch/users/sign_in.json?person[email]=".urlencode($_POST['Login'])."&person[password]=".urlencode($_POST['Passwort']),
+				CURLOPT_RETURNTRANSFER 	=> true,
+				CURLOPT_ENCODING 		=> "",
+				CURLOPT_HTTP_VERSION 	=> CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST 	=> "POST"
+			));
+			$result	= json_decode(curl_exec($curl), true);
+			$href	= $result["people"][0]["href"];
+			$token	= $result["people"][0]["authentication_token"];
+			
+			// Get details of person
+			curl_setopt_array($curl, array(
+				CURLOPT_URL 			=> $href."?user_email=".urlencode($_POST['Login'])."&user_token=".$token,
+				CURLOPT_CUSTOMREQUEST 	=> "GET"
+			));
+			$result	= json_decode(curl_exec($curl), true);
+			
+			if($result)
+			{
+				// Check if member of group
+				$groups = $result["linked"]["groups"];
+				$member = false;
+				foreach($groups as $g)
+				{
+					if(in_array($g["id"], $GLOBALS[midata_groups])) { $member = true; }
+				}
+				if($member)
+				{
+					$i = $result["people"][0];
+					
+					$id			= $i["id"];
+					$mail		= $i["email"]; 
+					$pw			= md5($_POST['Passwort']);
+					$scoutname	= $i["nickname"]; 
+					$firstname	= $i["first_name"]; 
+					$surname	= $i["last_name"]; 
+					$street		= (isset($i["address"])) ? $i["address"] : "NULL";
+					$zipcode	= (isset($i["zip_code"])) ? $i["zip_code"] : "NULL";
+					$city		= (isset($i["town"])) ? $i["town"] : "NULL";
+					$birthday	= (isset($i["birthday"])) ? $i["birthday"] : "NULL";
+					$sex		= (isset($i["gender"])) ? (($i["gender"] == "m") ? 0 : 1) : "NULL";
+					$jspersnr	= (isset($i["j_s_number"])) ? $i["j_s_number"] : "NULL";
+					$admin		= 0;
+					$active		= 1;
+					
+					// Format birthday
+					require_once( $GLOBALS[lib_dir] . "/functions/date.php" );
+					if($birthday != "NULL")
+					{
+						$d = date_create($birthday);
+						$d = date_format($d, "d-m-Y");
+						$date = new c_date;
+						$date->setString($d);
+						$birthday = $date->getValue();
+					}
+					
+					// Check if already in db
+					$query = "SELECT * FROM user WHERE id=$id LIMIT 1;";
+					if(mysql_num_rows(mysql_query($query)))
+					{
+						$query = "
+							UPDATE user SET
+							mail='$mail',pw='$pw',scoutname='$scoutname',firstname='$firstname',surname='$surname',street='$street',
+							zipcode='$zipcode',city='$city',birthday='$birthday',sex=$sex,jspersnr='$jspersnr'
+							WHERE id=$id;
+						";
+					}
+					else
+					{
+						$query = "
+							INSERT INTO user
+							(id, mail, pw, scoutname, firstname, surname, street, zipcode, city, birthday, sex, jspersnr, admin, active)
+							VALUES
+							($id, '$mail', '$pw', '$scoutname', '$firstname', '$surname', '$street', '$zipcode', '$city', '$birthday', $sex, '$jspersnr', $admin, $active)
+						";
+					}
+					
+					mysql_query($query);
+					
+				}
+				else
+				{
+					$html->set('SHOW_MSG', true);
+					$html->set('MSG', "Kein Mitglied einer autorisierten Abteilung.");
+				}
+			}
+			else
+			{
+				$html->set('SHOW_MSG', true);
+				$html->set('MSG', "MiData Anmeldung fehlgeschlagen.");
+			}
+			curl_close($curl);
+			
+		}
 		
 		$query = "SELECT pw, id, scoutname, firstname, active, last_camp FROM user WHERE mail = '" . $_POST['Login'] . "' LIMIT 1";
 		$result = mysql_query($query);
