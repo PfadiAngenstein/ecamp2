@@ -35,23 +35,29 @@
 		
 		function addCssFile( $file )
 		{
-			if( is_file( $file ) && !in_array( realpath( $file ), $this->cssRealpath ) )
+			if( (is_file( $file ) && !in_array( realpath( $file ), $this->cssRealpath)) || filter_var($file, FILTER_VALIDATE_URL) )
 			{
-				$this->loadFileDependency( $file );
+				if(!filter_var($file, FILTER_VALIDATE_URL))
+				{
+					$this->loadFileDependency( $file );
+					array_push( $this->cssRealpath, realpath( $file ) );
+				}
 
 				array_push( $this->cssFiles, $file );
-				array_push( $this->cssRealpath, realpath( $file ) );
 			}
 		}
 		
 		function addJsFile( $file )
 		{
-			if( is_file( $file ) && !in_array( realpath( $file ), $this->jsRealpath ) )
+			if( (is_file( $file ) && !in_array( realpath( $file ), $this->jsRealpath )) || filter_var($file, FILTER_VALIDATE_URL) )
 			{
-				$this->loadFileDependency( $file );
+				if(!filter_var($file, FILTER_VALIDATE_URL))
+				{
+					$this->loadFileDependency( $file );
+					array_push( $this->jsRealpath, realpath( $file ) );
+				}
 
 				array_push( $this->jsFiles, $file );
-				array_push( $this->jsRealpath, realpath( $file ) );
 			}
 		}
 		
@@ -67,6 +73,9 @@
 				
 				if( $type == "module" )
 				{	$this->addCssFile( $GLOBALS[public_module_dir] . "/css/" . $file );	}
+
+				if( $type == "web" )
+				{	$this->addCssFile( $file );	}
 			}
 		}
 		
@@ -82,6 +91,9 @@
 				
 				if( $type == "module" )
 				{	$this->addJsFile( $GLOBALS[public_module_dir] . "/js/" . $file );	}
+
+				if( $type == "web" )
+				{	$this->addJsFile( $file );	}
 			}
 		}
 		
