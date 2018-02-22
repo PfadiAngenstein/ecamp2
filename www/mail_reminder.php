@@ -3,10 +3,10 @@
 	 * Reminds users of their todo's.
 	 * This file is meant to be executed through cron-jobs.
 	*/
-	include("./config.php");
-	include($lib_dir . "/mysql.php");
-	include($lib_dir . "/functions/mail.php");
-	include($lib_dir . "/functions/date.php");
+	include("config.php");
+	include("lib/mysql.php");
+	include("lib/functions/mail.php");
+	include("lib/functions/date.php");
 	db_connect();
 
 	// Get all open todo's with responsible leader and camp name
