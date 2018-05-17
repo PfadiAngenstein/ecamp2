@@ -1,5 +1,5 @@
 <span metal:define-macro="welcome" tal:omit-tag="">
-	<center>Tschau du Wixxer &#x2764;</center>
+	<center>Tschau du Bastard &#x2764;</center>
 	<br />
 	<img src="https://www.pfadiangenstein.ch/images/angenstein.png" alt="Pfadi Angenstein" style="margin-left: calc(50% - 60px);" width="120"></img>
 	
