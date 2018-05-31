@@ -235,6 +235,55 @@
                                 </td>
                             </tr>
                         </table>
+
+                        <br /><br />
+
+                        <table width="90%" border="0" tal:condition="php: user_camp.auth_level >= 50">
+                        	<tr>
+                             	<td align="left">
+                        			<b>Dokumentablage</b>
+                        		</td>
+                        	</tr>
+                        	<tr>
+                             	<td align="left">
+                             		<form id="file_box" method="post" action="?app=camp&cmd=action_upload_file" enctype="multipart/form-data">
+                             			<input type="file" id="file" class="file-restart" name="files[]" multiple="multiple" />
+                             			<label for="file"><strong>Datei auswählen</strong> oder hineinziehen</label>
+                             			<div class="file-msg file-loadingfiles">Lade Dateien&hellip;<img src="public/global/img/wait.gif" /></div>
+                             			<div class="file-msg file-uploading">Hochladen&hellip;<img src="public/global/img/wait.gif" /></div>
+                             			<div class="file-msg file-deleting">Löschen...&hellip;<img src="public/global/img/wait.gif" /></div>
+                             			<div class="file-msg file-success">Erfolg!</div>
+                             			<div class="file-msg file-error">Fehler! <span></span></div>
+                             			<div id="file-info">
+                             				<table>
+                             					<tr><td>Name</td><td id="name"></td></tr>
+                             					<tr><td>Grösse</td><td id="size"></td></tr>
+                             					<tr><td>Hochgeladen</td><td id="edited"></td></tr>
+                             				</table>
+                             			</div>
+                             			<div class="file-overlay"></div>
+                             			<div id="files"></div>
+
+
+                             			<nav id="context-menu" class="context-menu">
+										  <ul class="context-menu__items">
+										    <li class="context-menu__item">
+										      <a href="#" class="context-menu__link" data-action="info"><i class="fa fa-info"></i><img src="public/global/img/file_info.svg" />Info</a>
+										    </li>
+										    <li class="context-menu__item">
+										      <a href="#" class="context-menu__link" data-action="delete"><i class="fa fa-delete"></i><img src="public/global/img/file_delete.svg" />Löschen</a>
+										    </li>
+										  </ul>
+										</nav>
+
+
+                             		</form>
+                             		<form id="file-show" method="post" action="?app=camp&cmd=action_show_files"></form>
+                             	</td>
+                             </tr>
+                        </table>
+
+                        <br /><br />
                         
 						</center>
 </span>

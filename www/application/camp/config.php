@@ -28,13 +28,17 @@ $security_level = array(
 				'action_add_subcamp' 				=> 50,
 				'action_del_subcamp' 				=> 50,
 				'action_move_subcamp' 				=> 50,
-				'action_change_subcamp' 			=> 50
+				'action_change_subcamp' 			=> 50,
+				'action_upload_file'	 			=> 50,
+				'action_show_files'					=> 50,
+				'action_del_file'					=> 50
 						);
 
 $css = array(
 				"home.css" 							=> "app",
 				"calendar.css" 						=> "module",
-				"content_template_fit.css" 			=> "global"
+				"content_template_fit.css" 			=> "global",
+				"filefolder.css"					=> "app"
 			);
 
 $js  = array(
@@ -44,6 +48,7 @@ $js  = array(
 				"popup.js"							=> "global",
 				"calendar.js" 						=> "module",
 				"home.js" 							=> "app",
+				"filefolder.js"						=> "app",
 				"https://map.search.ch/api/map.js"	=> "web"
 			);
 
