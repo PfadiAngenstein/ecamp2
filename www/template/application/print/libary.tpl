@@ -19,6 +19,10 @@
 				</p>
 				
 			</li>
+
+			<li class="libary story">
+				<h1>Roter Faden</h1>
+			</li>
 			
 			<li class="libary allevents">
 				<h1>Alle Blöcke</h1>

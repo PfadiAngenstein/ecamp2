@@ -46,9 +46,9 @@
 	$pdf = new FPDI('P', 'mm', 'A4', true, 'UTF-8', false);
 	$pdf->SetAutoPageBreak(true);
 	
-	$pdf->SetAuthor( 'ecamp2.pfadiluzern.ch' );
-	$pdf->SetSubject( 'J&S - Programm' );
-	$pdf->SetTitle( 'J&S - Programm' );
+	$pdf->SetAuthor( 'ecamp.pfadiangenstein.ch' );
+	$pdf->SetSubject( 'Programm ' . $_camp->short_name );
+	$pdf->SetTitle( 'Programm ' . $_camp->short_name );
 	
 	
 	
@@ -62,6 +62,9 @@
 			$print_build->picasso->set_orientation( $conf[$nr] );
 			$print_build->picasso->build( $pdf );
 		}
+
+		if( $item == "story" )
+		{	$print_build->story->build( $pdf );	}
 		
 		if( $item == "allevents" )
 		{

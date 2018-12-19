@@ -20,6 +20,7 @@
 
 	require_once( 'build_cover.php' );
 	require_once( 'build_picasso.php' );
+	require_once( 'build_story.php' );
 	require_once( 'build_daylist.php' );
 	require_once( 'build_day.php' );
 	require_once( 'build_event.php' );
@@ -33,6 +34,7 @@
 		
 		public $cover;
 		public $picasso;
+		public $story;
 		public $day_list;
 		public $day;
 		public $event;
@@ -44,6 +46,7 @@
 			
 			$this->cover 	= new print_build_cover_class( $this->data );
 			$this->picasso	= new print_build_picasso_class( $this->data );
+			$this->story	= new print_build_story_class( $this->data );
 			$this->daylist	= new print_build_daylist_class( $this->data );
 			$this->day		= new print_build_day_class( $this->data );
 			$this->event	= new print_build_event_class( $this->data );

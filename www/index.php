@@ -28,7 +28,7 @@
   #
   
   if( get_magic_quotes_gpc() )
-  {	die( "SET MAGIC QUOTS OFF!!!!" );	}
+  {	die( "SET MAGIC QUOTES OFF!!!!" );	}
   
   #############################################################################
   # Konfigurationsdatei einbinden
@@ -105,6 +105,7 @@
 						'option',
 						'print',
 						'program',
+						'story',
 						'todo',
 						'user_profile',
 						'support',

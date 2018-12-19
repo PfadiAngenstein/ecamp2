@@ -81,6 +81,11 @@ window.addEvent( 'domready', function()
 				order.set( 'item[' + index + ']', 'picasso' );
 				order.set( 'conf[' + index + ']', item.getElement( 'select' ).get('value') );
 			}
+
+			if( item.hasClass('story') )
+			{
+				order.set( 'item[' + index + ']', 'story' );
+			}
 			
 			if( item.hasClass('allevents') )
 			{
