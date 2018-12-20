@@ -625,12 +625,30 @@ var DI_TEXTAREA = new Class({
 	{
 		if( event.key == "backspace" || event.key == "delete" )
 		{	this.edit_input.setStyle( 'height', '30px' );	}
+
+		var edit_input_scroll = this.edit_input.getScrollSize().y.limit(30, 500);
+		if( this.edit_input.getSize().y < edit_input_scroll )
+		{	
+			this.edit_input.setStyle( 'height', edit_input_scroll );
+			if( this.edit_input.getStyle( 'box-sizing' ) == 'border-box' ) {
+				var edit_input_add = ( this.edit_input.offsetHeight - this.edit_input.clientHeight );
+				edit_input_add += ( parseFloat(window.getComputedStyle(this.edit_input, null).getPropertyValue('padding-top')) );
+				edit_input_add += ( parseFloat(window.getComputedStyle(this.edit_input, null).getPropertyValue('padding-bottom')) );
+				this.edit_input.setStyle( 'height', edit_input_scroll + edit_input_add );
+			}
+		}
 		
-		if( this.edit_input.getSize().y < this.edit_input.getScrollSize().y.limit(30, 500) )
-		{	this.edit_input.setStyle( 'height', this.edit_input.getScrollSize().y.limit(30, 500) );	}
-		
-		if( this.show_input.getSize().y < this.show_input.getScrollSize().y.limit(30, 500) )
-		{	this.show_input.setStyle( 'height', this.show_input.getScrollSize().y.limit(30, 500) );	}
+		var show_input_scroll = this.show_input.getScrollSize().y.limit(30, 500);
+		if( this.show_input.getSize().y < show_input_scroll )
+		{	
+			this.show_input.setStyle( 'height', show_input_scroll );
+			if( this.show_input.getStyle( 'box-sizing' ) == 'border-box' ) {
+				var show_input_add = ( this.show_input.offsetHeight - this.show_input.clientHeight );
+				show_input_add += ( parseFloat(window.getComputedStyle(this.show_input, null).getPropertyValue('padding-top')) );
+				show_input_add += ( parseFloat(window.getComputedStyle(this.show_input, null).getPropertyValue('padding-bottom')) );
+				this.show_input.setStyle( 'height', show_input_scroll + show_input_add );
+			}
+		}
 	},
 	
 	set_value: function( value )
