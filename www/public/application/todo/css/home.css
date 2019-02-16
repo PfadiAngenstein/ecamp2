@@ -61,6 +61,9 @@ td.todo_short
 td.todo_resp
 {	width: 15%;	}
 
+td.todo_resp select
+{	max-width: 150px; }
+
 td.todo_option
 {
 	width: 5%;
