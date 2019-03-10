@@ -103,7 +103,7 @@
 	
 	
 	// ToDo std. einfüllen
-	if( $is_course)
+	if( $is_course )
 	{
 		$query = "INSERT INTO todo (camp_id, title, short, date)
 					VALUES
@@ -113,23 +113,64 @@
 						('$last_camp_id', 'J+S-Material/Landeskarten', 			'J+S-Material und Landeskarten bestellen.', " . ( $start - 6 * 7 ) . ")";
 
 	}
-	else
+	// Wolfsstufe
+	else if ( $group_id == 6 )
 	{
 		$query = "INSERT INTO todo (camp_id, title, short, date)
 					VALUES
-						('$last_camp_id', 'Lagerhaus/Lagerplatz reservieren', 	'Das Lagerhaus/Lagerplatz definitiv reservieren.', " . ( $start - 8 * 30 ) . "),
-						('$last_camp_id', 'Küchenteam suchen', 					'Das Küchenteam zusammenstellen.', " . ( $start - 6 * 30 ) . "),
-						('$last_camp_id', 'Picasso zusammenstellen', 			'Ersten Entwurf des Picassos zusammenstellen.', " . ( $start - 6 * 30 ) . "),
-						('$last_camp_id', 'PBS - Lageranmeldung', 				'PBS - Lageranmeldung ausfüllen und an Coach schicken.', " . ( $start - 3 * 30 ) . "),
-						('$last_camp_id', 'J&S - Materialbestellung', 			'J&S - Materialbestellung ausfüllen und an Coach schicken', " . ( $start - 3 * 30 ) . "),
-						('$last_camp_id', 'Landeskartenbestellung', 			'Landeskartenbestellung ausfüllen und an Coach schicken', " . ( $start - 3 * 30 ) . "),
-						('$last_camp_id', 'J&S - Lageranmeldung', 				'Sicherstellen, dass Coach das Lager unter J&S anmeldet (online).', " . ( $start - 2 * 30 ) . "),
-						('$last_camp_id', 'Spendenaufrufe verschicken', 		'Spendenaufrufe an regionale Firmen verschicken.', " . ( $start - 2 * 30 ) . "),
-						('$last_camp_id', 'Lageranmeldung verschicken', 		'Lageranmeldung an alle TN verschicken.', " . ( $start - 2 * 30 ) . "),
-						('$last_camp_id', 'Programmabgabe', 					'Fertiges Programm an Coach abgeben.', " . ( $start - 6 * 7 ) . "),
-						('$last_camp_id', 'Siebdruck anfertigen', 				'Siebdruck / Lagerdruck anfertigen.', " . ( $start - 4 * 7 ) . "),
-						('$last_camp_id', 'Regaversicherung', 					'Für alle TN eine gratis - Regaversicherung abschliessen.', " . ( $start - 2 * 7 ) . "),
-						('$last_camp_id', 'Letzte Infos verschicken', 			'Letzte Infos für TNs verschicken', " . ( $start - 2 * 7 ) . ")";
+						('$last_camp_id', 'Lagerhaus reservieren', 				'Das Lagerhaus definitiv reservieren.', " . ( $start - 8 * 30 ) . "),
+						('$last_camp_id', 'Küche suchen', 						'Das Küchenteam zusammenstellen.', " . ( $start - 6 * 30 ) . "),
+						('$last_camp_id', 'Lagerplanung', 						'Hock machen und Picasso und Roter Faden ausplanen', " . ( $start - 10 * 7 ) . "),
+						('$last_camp_id', 'Lageranmeldung', 					'Picasso an Coach schicken für Lageranmeldung', " . ( $start - 7 * 7 ) . "),
+						('$last_camp_id', 'J+S Materialbestellung', 			'J+S Materialbestellung ausfüllen und an Coach schicken', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Materialbestellung', 				'Materialbedarf zusammentragen und Bestellung an Hobbes', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Lageranmeldung', 					'Sicherstellen, dass Anmeldetalon mit Versand versandt wurde', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Programmabgabe', 					'Alle Blöcke sind ausgeplant und auf 100% im ecamp', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Angaben für Budget', 				'Preise für Eintritte, Reise etc. an Verantwortlichen', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Landeskartenbestellung', 			'Landeskartenbestellung ausfüllen und an Coach schicken', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Reservation Zugreisen', 				'Alle Züge mit Formular reservieren + Stempel von Sportamt', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Broschüre erstellen',				'Infos einholen und mit neisem Disein versehen', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'J+S Lageranmeldung', 				'Sicherstellen, dass Coach das Lager unter J+S anmeldet (SPORTdb)', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Bettelbriefe',						'Optional: Bettelbriefe an lokale Firmen schicken (z.B. Jenzer)', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Lagerdossier einreichen', 			'Fertiges Lagerdossier an Coach & AL abgeben + Termin Feedbackhock', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'Broschüre versenden', 				'kla soweit?', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'Budget einreichen', 					'Budget mit Vorlage erstellen und an AL einreichen', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'TN-Liste', 							'Definitive TN-Liste in MiData und Coach informieren', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'Kollektiv holen', 					'Kollektiv für reservierte Reisen am Schalter holen und bezahlen', " . ( $start - 2 * 7 ) . "),
+						('$last_camp_id', 'Siebdruck anfertigen', 				'Siebdruck / Lagerdruck anfertigen', " . ( $start - 2 * 7 ) . ")";
+	}
+	// Pfadistufe
+	else if ( $group_id == 7 )
+	{
+		$query = "INSERT INTO todo (camp_id, title, short, date)
+					VALUES
+						('$last_camp_id', 'Lagerplatz reservieren', 			'Den Lagerplatz definitiv reservieren.', " . ( $start - 8 * 30 ) . "),
+						('$last_camp_id', 'Fouriere suchen', 					'Fourierteam zusammenstellen.', " . ( $start - 6 * 30 ) . "),
+						('$last_camp_id', 'Lagerplanung', 						'2 Höcke machen und Picasso und Roter Faden ausplanen', " . ( $start - 6 * 30 ) . "),
+						('$last_camp_id', 'Lageranmeldung', 					'Picasso an Coach schicken für Lageranmeldung', " . ( $start - 7 * 7 ) . "),
+						('$last_camp_id', 'J+S Materialbestellung', 			'J+S Materialbestellung ausfüllen und an Coach schicken', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Mattransport', 						'An- & Abtransport mit Formular (in Dropbox) organisieren', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Materialbestellung', 				'Materialbedarf zusammentragen und Bestellung an Hobbes', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Lageranmeldung', 					'Sicherstellen, dass Anmeldetalon mit Versand versandt wurde', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Programmabgabe', 					'Alle Blöcke sind ausgeplant und auf 100% im ecamp', " . ( $start - 5 * 7 ) . "),
+						('$last_camp_id', 'Angaben für Budget', 				'Preise für Eintritte, Reise, Holz etc. an Verantwortlichen', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Landeskartenbestellung', 			'Landeskartenbestellung ausfüllen und an Coach schicken', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Holz organisieren', 					'Schwarten bei Sägerei bestellen und Transport organisieren', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Reservation Zugreisen', 				'Alle Züge mit Formular reservieren + Stempel von Sportamt', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Broschüre erstellen',				'Infos einholen und mit neisem Disein versehen', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'J+S Lageranmeldung', 				'Sicherstellen, dass Coach das Lager unter J+S anmeldet (SPORTdb)', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Bettelbriefe',						'Optional: Bettelbriefe an lokale Firmen schicken (z.B. Jenzer)', " . ( $start - 4 * 7 ) . "),
+						('$last_camp_id', 'Lagerdossier einreichen', 			'Fertiges Lagerdossier an Coach & AL abgeben + Termin Feedbackhock', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'Broschüre versenden', 				'kla soweit?', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'Budget einreichen', 					'Budget mit Vorlage erstellen und an AL einreichen', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'TN-Liste', 							'Definitive TN-Liste in MiData und Coach informieren', " . ( $start - 3 * 7 ) . "),
+						('$last_camp_id', 'Kollektiv holen', 					'Kollektiv für reservierte Reisen am Schalter holen und bezahlen', " . ( $start - 2 * 7 ) . "),
+						('$last_camp_id', 'Siebdruck anfertigen', 				'Siebdruck / Lagerdruck anfertigen', " . ( $start - 2 * 7 ) . "),
+						('$last_camp_id', 'Auf-/Abbau planen', 					'Plan für Aufbau erstellen (wer? wann? was? wo?)', " . ( $start - 1 * 7 ) . ")";
+	}
+	else
+	{
+
 	}
 	mysql_query( $query );
 	
