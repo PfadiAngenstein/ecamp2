@@ -125,6 +125,7 @@
 						('$last_camp_id', 'J+S Materialbestellung', 			'J+S Materialbestellung ausfüllen und an Coach schicken', " . ( $start - 6 * 7 ) . "),
 						('$last_camp_id', 'Materialbestellung', 				'Materialbedarf zusammentragen und Bestellung an Hobbes', " . ( $start - 6 * 7 ) . "),
 						('$last_camp_id', 'Lageranmeldung', 					'Sicherstellen, dass Anmeldetalon mit Versand versandt wurde', " . ( $start - 6 * 7 ) . "),
+						('$last_camp_id', 'Lagersiko erstellen', 				'Sicherheitskonzept für ganzes Lager (+ evtl. für Aufbau/Abbau) schreiben', " . ( $start - 5 * 7 ) . "),
 						('$last_camp_id', 'Programmabgabe', 					'Alle Blöcke sind ausgeplant und auf 100% im ecamp', " . ( $start - 4 * 7 ) . "),
 						('$last_camp_id', 'Angaben für Budget', 				'Preise für Eintritte, Reise etc. an Verantwortlichen', " . ( $start - 4 * 7 ) . "),
 						('$last_camp_id', 'Landeskartenbestellung', 			'Landeskartenbestellung ausfüllen und an Coach schicken', " . ( $start - 4 * 7 ) . "),
