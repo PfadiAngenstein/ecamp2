@@ -1884,7 +1884,6 @@ var DI_MULTIPLE = new Class({
 	cancel: function()
 	{
 		this.list.each( function( input ){	input.cancel();	});
-		this.list.getFirst().show_input.focus();
 	},
 	
 	edit: function()
@@ -1895,7 +1894,11 @@ var DI_MULTIPLE = new Class({
 			if( this.options.uni_height ) 
 			{	this.autofit( "", input );	}
 		}.bind( this ) );
-		this.list.getFirst().edit_input.focus();
+		
+		if( this.list[1].show_input.value ) {
+			this.list[1].edit_input.focus();	}
+		else { 
+			this.list[0].edit_input.focus();	}
 	},
 	
 	save: function()
@@ -1965,8 +1968,6 @@ var DI_MULTIPLE = new Class({
 				else							{	input.autofit( "" );	}
 			}
 		}.bind( this ) );
-		
-		this.list.getFirst().show_input.focus();
 	},
 	
 	set: function(key, value)
