@@ -52,10 +52,10 @@
 							<table>
 								<tr><td colspan="2"><font class="title">Login</font></td></tr>
 								<tr height="10"><td> </td></tr>
-								<tr><td>E-Mail:</td><td><input tabindex="1" name="Login" type="text" /></td></tr>
-								<tr><td>Passwort:</td><td><input tabindex="2" name="Passwort" type="password" /></td></tr>
+								<tr><td>E-Mail:</td><td><input name="Login" type="text" /></td></tr>
+								<tr><td>Passwort:</td><td><input name="Passwort" type="password" /></td></tr>
 								<tr><td>Auto-Login:</td><td><input type="checkbox" name="autologin" /></td></tr>
-								<tr><td colspan="2" align="right"><input tabindex="3" type="submit" value="Login" /></td></tr>
+								<tr><td colspan="2" align="right"><input type="submit" value="Login" /></td></tr>
 								<tr><td> </td></tr>
                             </table>
 							<input name="Form" value="Login" type="hidden" />
