@@ -177,20 +177,22 @@
 	
 	
 	// Tages-chef hinzufügen
-	
 	$query = "INSERT INTO job (camp_id, job_name, show_gp)
 							VALUES ('$last_camp_id', 'Tageschef', '1')";
 	mysql_query($query);
 	
 	
-	//Einkaufslisten hinzufügen:
-	
+	// Materiallisten hinzufügen:
 	$query = "INSERT INTO mat_list ( camp_id, name )
-							VALUES( '$last_camp_id', 'Lebensmittel' )";
+							VALUES( '$last_camp_id', 'Organisieren' )";
 	mysql_query( $query );
 	
 	$query = "INSERT INTO mat_list ( camp_id, name )
-							VALUES( '$last_camp_id', 'Baumarkt' )";
+							VALUES( '$last_camp_id', 'Mitnehmen' )";
+	mysql_query( $query );
+
+	$query = "INSERT INTO mat_list ( camp_id, name )
+							VALUES( '$last_camp_id', 'Verkleidungen' )";
 	mysql_query( $query );
 	
 	
@@ -208,8 +210,6 @@
 	$last_subcamp_id = mysql_insert_id();
 	
 	// Days hinzufügen
-	
-	
 	$days = array();
 	
 	for($i=0; $i < $length; $i++)
