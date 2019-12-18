@@ -96,15 +96,15 @@
                     <tr><td colspan="2"><font class="title">eCamp - Login</font></td></tr>
                     <tr height="10"><td> </td></tr>
                     <tr><td>Type:</td><td tal:content="LOGIN_TYPE"></td></tr>
-                    <tr><td>E-Mail:</td><td><input tabindex="1" name="Login" type="text" id="Login" /></td></tr>
-                    <tr><td>Passwort:</td><td><input tabindex="2" name="Passwort" type="password" /></td></tr>
+                    <tr><td>E-Mail:</td><td><input name="Login" type="text" id="Login" /></td></tr>
+                    <tr><td>Passwort:</td><td><input name="Passwort" type="password" /></td></tr>
 					
 					<tr>
 						<td align="right"><input type="checkbox" name="autologin" id="autologin" /></td>
 						<td><label for="autologin">Beim nächsten Besuch von eCamp automatisch an mich erinnern.</label></td>
 					</tr>
 					
-                    <tr><td colspan="2" align="right"><input tabindex="3" type="submit" value="Login" /></td></tr>
+                    <tr><td colspan="2" align="right"><input type="submit" value="Login" /></td></tr>
                     <tr><td> </td></tr>
                 </table>
                 <input name="Form" value="Login" type="hidden" />

@@ -82,6 +82,7 @@
             <div class="menu_group">
 		        <a href="index.php?app=day" tal:attributes="class php: app=='day'?'actual_menu':''">Tages&uuml;bersicht</a><br />
 	            <a href="index.php?app=program" tal:attributes="class php: app=='program'?'actual_menu':''">Programm</a><br />
+              <a href="index.php?app=story" tal:attributes="class php: app=='story'?'actual_menu':''">Roter Faden</a><br />
 	        </div>
 	        
             <div class="menu_group">
