@@ -51,7 +51,7 @@
 	$ende = $c_end->getValue();
 	
 	
-	$is_course = (boolean) $is_course;
+	$is_course = ($is_course ==1) ? 1 : 0;
 	if( !$is_course )	{	$type = 0;	}
 	else				{	$type = $course_type;	}
 	
@@ -71,8 +71,8 @@
 	
 	
 	// Lager hinzufügen
-	$query = "INSERT INTO camp (group_id, name ,group_name, short_name, is_course, jstype, type, type_text, creator_user_id, t_created )
-						VALUES ('$group_id', '$name', '$group_name', '$short_name', '$is_course', '$jstype', '$type', '$course_type_text', '$_user->id', " . time() . ")";
+	$query = "INSERT INTO camp (group_id, name ,group_name, short_name, is_course, jstype, type, type_text, creator_user_id)
+						VALUES ('$group_id', '$name', '$group_name', '$short_name', $is_course, '$jstype', '$type', '$course_type_text', '$_user->id')";
 	mysql_query($query);
 	
 	
