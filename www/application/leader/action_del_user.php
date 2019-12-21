@@ -20,6 +20,16 @@
 
 	
 	$user_camp_id = mysql_real_escape_string($_REQUEST[user_camp_id]);
+
+
+
+	$query = "SELECT user_id FROM user_camp  WHERE id = '$user_camp_id'";
+	$result = mysql_query( $query, 0, 'user_id' );
+	if($result == $_camp->creator_user_id) {
+		$ans = array( "error" => true, "msg" => "Der Ersteller des Lagers kann nicht entfernt werden!" );
+		echo json_encode( $ans );
+		die();
+	}
 	
 	
 	
@@ -52,13 +62,25 @@
 					WHERE user_camp_id = $user_camp_id";
 		mysql_query( $query ); 
 	}
+
+
+
+	$query = "DELETE FROM todo_user_camp WHERE user_camp_id = $user_camp_id";
+	$result = mysql_query( $query );
 	
+	if( !mysql_affected_rows() ) {
+		$ans = array( "error" => true, "msg" => "Fehler in der Datenbankabfrage!" );
+		echo json_encode( $ans );
+		die();
+	}	
+	
+
 	
 	$query = "SELECT user_id FROM user_camp  WHERE id = '$user_camp_id'";
 	$result = mysql_query($query);
 	$user_id = mysql_result( $result, 0, 'user_id' );
 	
-	$query = "DELETE FROM user_camp WHERE id = '$user_camp_id' AND NOT user_id='$_camp->creator_userid' AND camp_id = '$_camp->id'";
+	$query = "DELETE FROM user_camp WHERE id = '$user_camp_id' AND NOT user_id='$_camp->creator_user_id' AND camp_id = '$_camp->id'";
 	
 	mysql_query($query);
 	
