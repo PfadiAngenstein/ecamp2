@@ -60,28 +60,28 @@
 		
 		
 		//$dropdown[$camp[groups_id]] = array();
-		$dropdown[$camp[groups_id]][group_name] = $camp[short_prefix] . " " . $camp[groups_name];
+		$dropdown[$camp['groups_id']]['group_name'] = $camp['short_prefix'] . " " . $camp['groups_name'];
 		//$dropdown[$camp[groups_id]][camp_list]  = array();
 		
 		//$dropdown[$camp[groups_id]][camp_list][$camp[id]] = array();
-		$dropdown[$camp[groups_id]][camp_list][$camp[id]][short_name] = $camp[short_name];
-		$dropdown[$camp[groups_id]][camp_list][$camp[id]][id] = $camp[id];
+		$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['short_name'] = $camp['short_name'];
+		$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['id'] = $camp['id'];
 		
-		$dropdown[$camp[groups_id]][camp_list][$camp[id]][past] = ( $camp_end < $c_date->getValue() );
+		$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['past'] = ( $camp_end < $c_date->getValue() );
 		
 		
-		if( $camp[id] == $_camp->id )
-		{	$dropdown[$camp[groups_id]][camp_list][$camp[id]][selected] = true;		}
+		if( $camp['id'] == $_camp->id )
+		{	$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['selected'] = true;		}
 		else
-		{	$dropdown[$camp[groups_id]][camp_list][$camp[id]][selected] = false;	}
+		{	$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['selected'] = false;	}
 		
 		
-		if( !$dropdown[$camp[groups_id]][child_num] )
-		{	$dropdown[$camp[groups_id]][child_num] = false;	}
+		if( !$dropdown[$camp['groups_id']]['child_num'] )
+		{	$dropdown[$camp['groups_id']]['child_num'] = false;	}
 		
-		$dropdown[$camp[groups_id]][child_num] = 	$dropdown[$camp[groups_id]][child_num] || 
-													!$dropdown[$camp[groups_id]][camp_list][$camp[id]][past] ||
-													$dropdown[$camp[groups_id]][camp_list][$camp[id]][selected];
+		$dropdown[$camp['groups_id']]['child_num'] = 	$dropdown[$camp['groups_id']]['child_num'] || 
+													!$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['past'] ||
+													$dropdown[$camp['groups_id']]['camp_list'][$camp['id']]['selected'];
 	}
 	
 	
