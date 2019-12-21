@@ -75,9 +75,9 @@
   # Template-Engine einbinden
   require_once("./lib/PHPTAL.php");
   
-  if( $_SESSION[skin] == "" ) {	$_SESSION[skin] = $GLOBALS[skin];	}
+  if( $_SESSION['skin'] == "" ) {	$_SESSION['skin'] = $GLOBALS['skin'];	}
   
-  $_page->html = new PHPTAL("public/skin/".$_SESSION[skin]."/main.tpl");
+  $_page->html = new PHPTAL("public/skin/".$_SESSION['skin']."/main.tpl");
   //$_page->html = new PHPTAL("template/global/main.tpl");
   $_page->html->setEncoding('UTF-8');
   $_page->html->set( 'show_info_box', 0 );
@@ -85,20 +85,25 @@
   #############################################################################
   # Applikation und Kommando lesen
   //$camp_id = secure_input_nr( $_SESSION[camp_id] );   global $camp_id;
-  $_page->app	= secure_input_filename( $_REQUEST[app] );
-  $_page->cmd	= secure_input_filename( $_REQUEST[cmd] );
+  $_page->app	= secure_input_filename( $_REQUEST['app'] );
+  $_page->cmd	= secure_input_filename( $_REQUEST['cmd'] );
   
   include( "lib/app_program.php" );
   
   // Liste aller erlaubten Applikationen       z.B. index.php?app=home    (später in DB)
   $valid_app = array( 
-  						'invent',
+						'analytics',
+                        'aim',
 						'camp',
 						'camp_admin',
+						'course_checklist',
 						'day',
 						'db',
 						'event',
+						'faq',
   						'home',
+						'impressum',
+  						'invent',
 						'leader',
 						'my_resp',
 						'mat_list',
@@ -106,13 +111,9 @@
 						'print',
 						'program',
 						'story',
-						'todo',
-						'user_profile',
 						'support',
-						'faq',
-						'impressum',
-						'aim',
-						'course_checklist'
+						'todo',
+						'user_profile'
 					);
   
   // Applikation überprüfen
@@ -227,8 +228,8 @@
   $_page->html->set('js_code', $_js_env->get_js_code() );
   
   $_page->html->set("sys_dir", "../../.." );
-  $_page->html->set("tpl_dir", $GLOBALS[tpl_dir] );
-  $_page->html->set("skin", $_SESSION[skin] );
+  $_page->html->set("tpl_dir", $GLOBALS['tpl_dir'] );
+  $_page->html->set("skin", $_SESSION['skin'] );
   
   if( $_REQUEST[ 'phptal' ] == 'debug' )
   {
@@ -241,24 +242,24 @@
   $output =  $_page->html->execute(); 
   
   // HTML Tidy
-  if( !extension_loaded('tidy') || !$GLOBALS[parse_tidy]  )
+  if( !extension_loaded('tidy') || !$GLOBALS['parse_tidy']  )
   {
   	echo $output;
   }
   else
   {
 	  $config_debug = array(
-				'indent'         => true,
-				'indent-spaces'  => 2,
-				'output-xml'     => true,
+				'indent'        => true,
+				'indent-spaces' => 2,
+				'output-xml'    => true,
 				'input-xml'     => true,
-				'wrap'         => '1000');
+				'wrap'          => '1000');
 				
 	  $config_running= array(
-				'indent'         => false,
-				'output-xml'     => true,
+				'indent'        => false,
+				'output-xml'    => true,
 				'input-xml'     => true,
-				'wrap'         => '0');
+				'wrap'          => '0');
 	
 	  $tidy = new tidy();
 	  $tidy->parseString($output, $config_debug, 'utf8');

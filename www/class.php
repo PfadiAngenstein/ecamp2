@@ -66,13 +66,13 @@
 			foreach( $config as $file => $type )
 			{
 				if( $type == "app" )
-				{	$this->addCssFile( $GLOBALS[public_app_dir] . "/" . $this->app . "/css/" . $file );	}
+				{	$this->addCssFile( $GLOBALS['public_app_dir'] . "/" . $this->app . "/css/" . $file );	}
 				
 				if( $type == "global" )
-				{	$this->addCssFile( $GLOBALS[public_global_dir] . "/css/" . $file );	}
+				{	$this->addCssFile( $GLOBALS['public_global_dir'] . "/css/" . $file );	}
 				
 				if( $type == "module" )
-				{	$this->addCssFile( $GLOBALS[public_module_dir] . "/css/" . $file );	}
+				{	$this->addCssFile( $GLOBALS['public_module_dir'] . "/css/" . $file );	}
 
 				if( $type == "web" )
 				{	$this->addCssFile( $file );	}
@@ -84,13 +84,13 @@
 			foreach( $config as $file => $type )
 			{
 				if( $type == "app" )
-				{	$this->addJsFile( $GLOBALS[public_app_dir] . "/" . $this->app . "/js/" . $file );	}
+				{	$this->addJsFile( $GLOBALS['public_app_dir'] . "/" . $this->app . "/js/" . $file );	}
 				
 				if( $type == "global" )
-				{	$this->addJsFile( $GLOBALS[public_global_dir] . "/js/" . $file );	}
+				{	$this->addJsFile( $GLOBALS['public_global_dir'] . "/js/" . $file );	}
 				
 				if( $type == "module" )
-				{	$this->addJsFile( $GLOBALS[public_module_dir] . "/js/" . $file );	}
+				{	$this->addJsFile( $GLOBALS['public_module_dir'] . "/js/" . $file );	}
 
 				if( $type == "web" )
 				{	$this->addJsFile( $file );	}
@@ -160,15 +160,15 @@
 		
 		function load_data($data)
 		{
-			if( isset( $data[id] ) )			{	$this->id = $data[id];						}
-			if( isset( $data[ip] ) )			{	$this->ip = $data[ip];						}
-			if( isset( $data[mail] ) )			{	$this->mail = $data[mail];					}
-			if( isset( $data[scoutname] ) )		{	$this->scoutname = $data[scoutname];		}
-			if( isset( $data[firstname] ) )		{	$this->firstname = $data[firstname];		}
-			if( isset( $data[surname] ) )		{	$this->surname = $data[surname];			}
-			if( isset( $data[display_name] ) )	{	$this->display_name = $data[display_name];	}
-			if( isset( $data[admin] ) )			{	$this->admin = $data[admin];				}
-			if( isset( $data[active] ) )		{	$this->active = $data[active];				}
+			if( isset( $data['id'] ) )				{	$this->id = $data['id'];						}
+			if( isset( $data['ip'] ) )				{	$this->ip = $data['ip'];						}
+			if( isset( $data['mail'] ) )			{	$this->mail = $data['mail'];					}
+			if( isset( $data['scoutname'] ) )		{	$this->scoutname = $data['scoutname'];		}
+			if( isset( $data['firstname'] ) )		{	$this->firstname = $data['firstname'];		}
+			if( isset( $data['surname'] ) )			{	$this->surname = $data['surname'];			}
+			if( isset( $data['display_name'] ) )	{	$this->display_name = $data['display_name'];	}
+			if( isset( $data['admin'] ) )			{	$this->admin = $data['admin'];				}
+			if( isset( $data['active'] ) )			{	$this->active = $data['active'];				}
 		}
 	}
 	
@@ -180,9 +180,9 @@
 		
 		function load_data( $data )
 		{
-			if( isset( $data[id] ) )			{	$this->id = $data[id];						}
-			if( isset( $data[function_id] ) )	{	$this->function_id = $data[function_id];	}
-			if( isset( $data[auth_level] ) )	{	$this->auth_level = $data[auth_level];		}
+			if( isset( $data['id'] ) )			{	$this->id = $data['id'];						}
+			if( isset( $data['function_id'] ) )	{	$this->function_id = $data['function_id'];	}
+			if( isset( $data['auth_level'] ) )	{	$this->auth_level = $data['auth_level'];		}
 		}
 	}
 	
@@ -197,12 +197,12 @@
 		
 		function load_data($data)
 		{
-			if( isset( $data[id] ) )				{	$this->id = $data[id];	}
-			if( isset( $data[short_name] ) )		{	$this->short_name = $data[short_name];	}
-			if( isset( $data[group_name] ) )		{	$this->group_name = $data[group_name];	}
-			if( isset( $data[type] ) )				{	$this->type = $data[type];	}
-			if( isset( $data[is_course] ) )			{	$this->is_course = $data[is_course];	}
-			if( isset( $data[creator_user_id] ) )	{	$this->creator_user_id = $data[creator_user_id];	}
+			if( isset( $data['id'] ) )					{	$this->id = $data['id'];	}
+			if( isset( $data['short_name'] ) )			{	$this->short_name = $data['short_name'];	}
+			if( isset( $data['group_name'] ) )			{	$this->group_name = $data['group_name'];	}
+			if( isset( $data['type'] ) )				{	$this->type = $data['type'];	}
+			if( isset( $data['is_course'] ) )			{	$this->is_course = $data['is_course'];	}
+			if( isset( $data['creator_user_id'] ) )		{	$this->creator_user_id = $data['creator_user_id'];	}
 		}
 		
 		
@@ -353,8 +353,8 @@
 			
 			krsort( $news );
 			
-			if( count( $news ) > $GLOBALS[news_num] )
-			{	$news = array_slice( $news, count( $news ) - $GLOBALS[news_num], $GLOBALS[news_num], true );	}
+			if( count( $news ) > $GLOBALS['news_num'] )
+			{	$news = array_slice( $news, count( $news ) - $GLOBALS['news_num'], $GLOBALS['news_num'], true );	}
 			
 			
 			$this->save( $news, $user_id );
