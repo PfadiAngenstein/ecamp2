@@ -93,7 +93,7 @@
   // Liste aller erlaubten Applikationen       z.B. index.php?app=home    (später in DB)
   $valid_app = array( 
 						'analytics',
-                        'aim',
+						'aim',
 						'camp',
 						'camp_admin',
 						'course_checklist',
@@ -101,9 +101,9 @@
 						'db',
 						'event',
 						'faq',
-  						'home',
+						'home',
 						'impressum',
-  						'invent',
+						'invent',
 						'leader',
 						'my_resp',
 						'mat_list',
@@ -160,11 +160,11 @@
   
   if(is_array($css))
   {
-    $_page->addCssConfig( $css );
-    
-  	$includes['css'] = array();
+	$_page->addCssConfig( $css );
 	
-  	foreach($css as $css_file => $place)
+	$includes['css'] = array();
+	
+	foreach($css as $css_file => $place)
 	{	
 		if($place == "app")
 		{	$css_file = $public_app_dir . "/" . $_page->app . "/css/" . $css_file;  }
@@ -181,11 +181,11 @@
   
   if(is_array($js))
   {
-  	$_page->addJsConfig( $js );
+	$_page->addJsConfig( $js );
   
-  	$includes['js'] = array();
+	$includes['js'] = array();
 	
-  	foreach($js as $js_file => $place)
+	foreach($js as $js_file => $place)
 	{	
 		if($place == "app")
 		{	$js_file = $public_app_dir . "/" . $_page->app . "/js/" . $js_file;  }
@@ -233,10 +233,10 @@
   
   if( $_REQUEST[ 'phptal' ] == 'debug' )
   {
-  	echo "<pre>";
-  	print_r( $_page->html->getContext() );
-  	echo "</pre>";
-  	die();
+	echo "<pre>";
+	print_r( $_page->html->getContext() );
+	echo "</pre>";
+	die();
   }
   
   $output =  $_page->html->execute(); 
@@ -244,7 +244,7 @@
   // HTML Tidy
   if( !extension_loaded('tidy') || !$GLOBALS['parse_tidy']  )
   {
-  	echo $output;
+	echo $output;
   }
   else
   {

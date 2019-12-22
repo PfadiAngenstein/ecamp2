@@ -1,25 +1,13 @@
 <span metal:define-macro="menu" tal:omit-tag="">
-    <!--
-    <form action="index.php" style="margin-bottom:4px;" class="admin_menu hidden">
-        <select onChange="this.form.submit()" name="skin">
-            <option></option>
-			<option value="skin1">skin1</option>
-            <option value="skin2">skin2</option>
-            <option value="skin3">skin3</option>
-		</select>
-        <input type="hidden" name="app" value="home" />
-        <input type="hidden" name="cmd" value="action_change_skin" />
-    </form>
-    -->
     
     
     
     <span tal:condition="user/admin" tal:omit-tag="" >
         <div class="menu hidden menu_box admin_menu" align="left">
-          <a  href="index.php?app=db&cmd=statistics">Statistik</a><br />
-          <a  href="index.php?app=db&cmd=integrity">Integrit&auml;t</a><br />
-          <a  href="index.php?app=support">Support</a><br />
-          <a  href="https://admin.hostpoint.ch/phpMyAdmin/?db=pfadiluz_ecamp2&server=164" target="_blank">phpMyAdmin</a><br />
+            <a  href="index.php?app=db&cmd=statistics">Statistik</a><br />
+            <a href="index.php?app=db&cmd=integrity">Integrit&auml;t</a><br />
+            <a  href="index.php?app=support">Support</a><br />
+            <a  href="https://admin.hostpoint.ch/phpMyAdmin/?db=pfadiluz_ecamp2&server=164" target="_blank">phpMyAdmin</a><br />
         </div>
 	</span>
 	
@@ -62,7 +50,6 @@
         <div class="menu menu_box" align="left">
             <div class="menu_group">
 	            <a href="index.php?app=camp" tal:attributes="class php: app=='camp'?'actual_menu':''">Infos zum Lager</a><br />
-	            
 	            <span tal:condition="php: user_camp.auth_level >= 50" tal:omit-tag="">
 	            	<a href="index.php?app=option" tal:attributes="class php: app=='option'?'actual_menu':''">Einstellungen</a><br />
 	            </span>
@@ -82,20 +69,19 @@
             <div class="menu_group">
 		        <a href="index.php?app=day" tal:attributes="class php: app=='day'?'actual_menu':''">Tages&uuml;bersicht</a><br />
 	            <a href="index.php?app=program" tal:attributes="class php: app=='program'?'actual_menu':''">Programm</a><br />
-              <a href="index.php?app=story" tal:attributes="class php: app=='story'?'actual_menu':''">Roter Faden</a><br />
+                <a href="index.php?app=story" tal:attributes="class php: app=='story'?'actual_menu':''">Roter Faden</a><br />
 	        </div>
+
+            <tal:block condition="php: user_camp.auth_level >= 50">
+                <div class="menu_group">
+                    <a href="index.php?app=analytics" tal:attributes="class php: app=='analytics'?'actual_menu':''">Analyse</a><br />
+                </div>
+            </tal:block>
 	        
             <div class="menu_group">
 		        <a href="index.php?app=my_resp" tal:attributes="class php: app=='my_resp'?'actual_menu':''">Meine Verantwortung</a><br />
 				<a href="index.php?app=print" tal:attributes="class php: app=='print'?'actual_menu':''">PDF Drucken</a><br />
         	</div>
         </div>
-<!--        
-        <div class="menu_title">PDF/Drucken:</div>
-        <div class="menu menu_box" align="left">
-			<a  href="index.php?app=print&cmd=g_program">Grobprogramm</a><br />
-			<a  href="#">Materialliste</a>  
-        </div>
--->
     </span>
 </span>

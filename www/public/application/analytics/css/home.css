@@ -1,0 +1,13 @@
+.jsValidBox {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.jsValidBox table td {
+	min-width: 200px;
+}
+
+.jsValidBox table td ul {
+	padding-left: 13px;
+}
+
