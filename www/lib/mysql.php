@@ -20,8 +20,8 @@
 
 	function db_connect()
 	{
-		mysql_connect($GLOBALS[host], $GLOBALS[us], $GLOBALS[pw]) or die(mysql_error());
-		mysql_select_db($GLOBALS[db]) or die(mysql_error());
+		mysql_connect($GLOBALS['host'], $GLOBALS['us'], $GLOBALS['pw']) or die(mysql_error());
+		mysql_select_db($GLOBALS['db']) or die(mysql_error());
 		
 		mysql_query("SET NAMES 'utf8'");
 		mysql_query("SET CHARACTER SET 'utf8'");

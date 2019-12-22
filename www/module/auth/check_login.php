@@ -98,8 +98,8 @@
 							if(mysql_num_rows($result) > 0)
 							{
 								$val = mysql_fetch_assoc($result);
-								if( $val[level] > $_user_camp->auth_level) 
-								{	$_user_camp->auth_level = $val[level];	}
+								if( $val['level'] > $_user_camp->auth_level) 
+								{	$_user_camp->auth_level = $val['level'];	}
 							}
 						}
 					}
