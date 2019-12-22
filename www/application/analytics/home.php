@@ -107,9 +107,9 @@
 				$length_dinner = $event['length'];
 			} else {
 				if( 
-					// LS mind. 1h, LA mind. 30min laut J+S
+					// LS und LS min. 30min laut J+S
 					($event['category_id'] == $category_ls && $event['length'] >= 30) ||
-					($event['category_id'] == $category_la && $event['length'] >= 60) ) {
+					($event['category_id'] == $category_la && $event['length'] >= 30) ) {
 					$event['link'] = '$event.edit(' . $event['id'] . ')';
 					$day_events[] = $event;
 				}
