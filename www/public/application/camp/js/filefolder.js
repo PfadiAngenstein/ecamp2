@@ -420,7 +420,13 @@ document.addEventListener('DOMContentLoaded', function (){
 			size = (file.size / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
 			// last edited
 			ts = new Date(file.edited*1000);
-			date = ('0'+ts.getDate()).substr(-2)+'.'+('0'+ts.getMonth()).substr(-2)+'.'+ts.getFullYear();
+			var year = ts.getFullYear();
+			var month = ('0'+(ts.getMonth()+1)).substr(-2);
+			var day = ('0'+ts.getDate()).substr(-2);
+			var hours = ('0'+ts.getHours()).substr(-2);
+			var minutes = ('0'+ts.getMinutes()).substr(-2);
+			var seconds = ('0'+ts.getSeconds()).substr(-2);
+			var date = day+'.'+month+'.'+year+' '+hours+':'+minutes+':'+seconds;
 			fileinfo.getElementById("name").innerHTML = file.name;
 			fileinfo.getElementById("size").innerHTML = size;
 			fileinfo.getElementById("edited").innerHTML = date;
