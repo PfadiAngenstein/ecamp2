@@ -43,6 +43,7 @@ $js  = array(
 				"dynamic_input.js"	=> "global",
 				"popup.js"			=> "global",
 				"other.js" 			=> "global",
+				"select_type.js" 	=> "global",
 				"event.js" 			=> "module",
 				"new_event.js"		=> "app",
 				"edit_event.js"		=> "app",

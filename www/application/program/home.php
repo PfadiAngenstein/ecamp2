@@ -20,13 +20,13 @@
 
 
 		
-	$_page->html->set('main_macro', $GLOBALS[tpl_dir].'/global/content_box_full.tpl/predefine');
-	$_page->html->set('box_content', $GLOBALS[tpl_dir].'/application/program/home.tpl/home');
+	$_page->html->set('main_macro', $GLOBALS['tpl_dir'].'/global/content_box_full.tpl/predefine');
+	$_page->html->set('box_content', $GLOBALS['tpl_dir'].'/application/program/home.tpl/home');
 	$_page->html->set('box_title', 'Grobprogramm');
 	
 	
 	$_page->html->set( 'show_info_box', true );
-	$_page->html->set( 'info_box', $GLOBALS[tpl_dir].'/module/info/info_box.tpl/info_box' );
+	$_page->html->set( 'info_box', $GLOBALS['tpl_dir'].'/module/info/info_box.tpl/info_box' );
 	
 
 	# Lagerstart, Lagerende und Lagerdauer
@@ -54,7 +54,7 @@
 								user_camp
 							WHERE
 								job.show_gp = 1 AND
-								job_day.day_id = " . $day[id] . " AND
+								job_day.day_id = " . $day['id'] . " AND
 								job_day.user_camp_id = user_camp.id AND
 								job_day.job_id = job.id";
 		$leader_result = mysql_query( $leader_query );
@@ -70,14 +70,14 @@
 		$day_nr++;
 		
 		$date = new c_date;
-		$date->setDay2000($day[start] + $day[day_offset]);
+		$date->setDay2000($day['start'] + $day['day_offset']);
 		
 		$days[] = array(
-						"day_id" => $day[id],
-						"day_id_string" => "day_id_" . $day[id],
+						"day_id" => $day['id'],
+						"day_id_string" => "day_id_" . $day['id'],
 						"style" => "left:" . $day_width*($day_nr - 1) . "px; width:" . $day_width . "px",
-						"date" => strtr( $date->getString( 'D d.m.Y' ), $GLOBALS[en_to_de] ),
-						"link" => "index.php?app=day&cmd=home&day_id=" . $day[id],
+						"date" => strtr( $date->getString( 'D d.m.Y' ), $GLOBALS['en_to_de'] ),
+						"link" => "index.php?app=day&cmd=home&day_id=" . $day['id'],
 						"leader" => $leader,
 						"class" => (($day_nr % 2) ? "bg1" : "bg2"),
 						"body_class" => (($day_nr % 2) ? "bg1" : "bg2") . " day_body"

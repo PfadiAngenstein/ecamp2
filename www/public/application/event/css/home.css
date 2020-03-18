@@ -175,6 +175,10 @@ div.d_program_tag_title
 	font-weight:bold;
 }
 
+div.d_program_tag_content select {
+	width: 33.33%;
+}
+
 div.d_program_grey
 {
 	left:5px;

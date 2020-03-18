@@ -50,8 +50,9 @@ $css = array(
 $js  = array(
 				"mootools-core-1.4.js" 		=> "global",
 				"mootools-more-1.4.js" 		=> "global",
-				"popup.js" => "global",
-				"other.js" => "global",
+				"popup.js" 					=> "global",
+				"other.js" 					=> "global",
+				"select_type.js" 			=> "global",
 				
 				"gp_class.js"	=> "app",
 				"user_class.js" => "app",

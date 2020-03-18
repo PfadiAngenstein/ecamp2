@@ -25,6 +25,7 @@ $security_level = array(
 							'home' => 20,
 							'action_change_resp' => 40,
 							'action_change_progress' => 40,
+							'action_change_type' => 40,
 							'action_change_place' => 40,
 							'action_change_aim' => 40,
 							'action_change_story' => 40,
@@ -55,7 +56,10 @@ $security_level = array(
 							'file_upload_done' => 40,
 							'action_file_upload' => 40,
 							'action_file_delete' => 40,
-							'action_file_print' => 40
+							'action_file_print' => 40,
+
+							'load_select_type' => 40,
+							'load_type' => 40
 						);
 
 $css = array(

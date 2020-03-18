@@ -1,9 +1,18 @@
 <span metal:define-macro="dp_ls_head" tal:omit-tag="">
     <span metal:use-macro="dp_border.tpl/dp_border">
-    	<span metal:fill-slot="border_title" tal:omit-tag="">Ziel / Metode:</span>
+    	<span metal:fill-slot="border_title" tal:omit-tag="">Ziel / Methode:</span>
     	
     	<span metal:fill-slot="border_content" tal:omit-tag="">
 			<table width="100%" class="dp_head">
+				<tr>
+					<td><b>Typ</b></td>
+				</tr>
+				<tr>
+					<td>
+						<div id="event_type_selects" style="width:100%" align="left"></div>
+						<div id="event_type_load" class="hidden"><img src="public/global/img/wait.gif" /></div>
+					</td>
+				</tr>
 				<tr>
 					<td><b>Roter Faden:</b></td>
 				</tr>

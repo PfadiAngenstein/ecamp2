@@ -225,6 +225,7 @@
 	include( "load_pdf.php" );
 	include( "load_comment.php" );
 	
+	include( "load_type.php" );
 	include( "load_aim.php" );
 	include( "load_checklist.php" );
 	

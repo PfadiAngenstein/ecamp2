@@ -134,7 +134,14 @@ $event = new Hash(
 		{	this.event_progress.show_input.focus();	}
 		
 		new DI_MSELECT( $('event_dp_header_resp'), { 	'args': { 'app': 'event', 'cmd': 'action_change_resp', 'event_id': this.id },
-													 	'changed': this.update_background, 'min_level': 40 } );
+														'changed': this.update_background, 'min_level': 40 } );
+
+
+		//	Type:
+		// ==============
+		//new DI_MSELECT( $('event_type'), {	'args': { 'app': 		'event', 'cmd':		'action_change_type', 'event_id': this.id },
+		//															'changed': this.update_background, 'min_level': 40 } );
+		new select_class( 0, null, -1, $_var_from_php.type_list );
 		
 		
 		if( $('edit_aim') )
@@ -178,15 +185,15 @@ $event = new Hash(
 		
 		//	Dynamic Inputs:
 		// =================
-		new DI_TEXTAREA( 'event_dp_head_story',  { 'args': { 'app': 'event', 'cmd': 'action_change_story', 	'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
-		new DI_TEXTAREA( 'event_dp_head_aim', 	 { 'args': { 'app': 'event', 'cmd': 'action_change_aim', 	'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
-		new DI_TEXTAREA( 'event_dp_head_method', { 'args': { 'app': 'event', 'cmd': 'action_change_method', 'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
-		new DI_TEXTAREA( 'event_dp_head_topics', { 'args': { 'app': 'event', 'cmd': 'action_change_topics', 'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
+		new DI_TEXTAREA( 'event_dp_head_story',  { 'args': { 'app': 'event', 'cmd': 'action_change_story', 	'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
+		new DI_TEXTAREA( 'event_dp_head_aim', 	 { 'args': { 'app': 'event', 'cmd': 'action_change_aim', 	'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
+		new DI_TEXTAREA( 'event_dp_head_method', { 'args': { 'app': 'event', 'cmd': 'action_change_method', 'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
+		new DI_TEXTAREA( 'event_dp_head_topics', { 'args': { 'app': 'event', 'cmd': 'action_change_topics', 'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
 		
-		new DI_TEXT( 'event_dp_header_place', 	 { 'args': { 'app': 'event', 'cmd': 'action_change_place', 	'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
+		new DI_TEXT( 'event_dp_header_place', 	 { 'args': { 'app': 'event', 'cmd': 'action_change_place', 	'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
 		
-		new DI_TEXTAREA( 'event_dp_siko_siko',	 { 'args': { 'app': 'event', 'cmd': 'action_change_siko', 	'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
-		new DI_TEXTAREA( 'event_dp_siko_note', 	 { 'args': { 'app': 'event', 'cmd': 'action_change_notes', 	'event_id': this.id }, "button_pos": "bottom", min_level: 40 } );
+		new DI_TEXTAREA( 'event_dp_siko_siko',	 { 'args': { 'app': 'event', 'cmd': 'action_change_siko', 	'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
+		new DI_TEXTAREA( 'event_dp_siko_note', 	 { 'args': { 'app': 'event', 'cmd': 'action_change_notes', 	'event_id': this.id }, 'button_pos': 'bottom', 'min_level': 40 } );
 		
 		
 		$$('#d_program_sort .dp_event_detail').each( this.event_detail_setup.bind(this) );
