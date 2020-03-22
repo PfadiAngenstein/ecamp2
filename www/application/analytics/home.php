@@ -167,4 +167,128 @@
 
     $_page->html->set('jsAnalytics', $jsAnalytics);
 
+
+
+
+    $query = "	SELECT
+    				e.id,
+    				e.name,
+    				e.type,
+    				c.short_name,
+    				c.color
+    			FROM
+    				event as e
+    			INNER JOIN
+    				category as c ON e.category_id=c.id
+    			WHERE
+    				e.camp_id=" . $_camp->id;
+
+    $results = mysql_query( $query );
+
+	$events_blocktype = array();
+	$events_emptytype = array(
+		array("name" => "Leer", "count" => 0, "children" => array()),
+		array("name" => "Mit Typ", "count" => 0, "children" => array())
+	);
+    
+    while( $event = mysql_fetch_assoc( $results ) ) {
+    	// Array für Blocktypen
+    	if( !is_null( $event['type'] ) ) {
+	    	$events_blocktype[] = array(
+	    		"event" => $event,
+	    		"tree" => getParents( $event['type'], null )
+	    	);
+    	}
+
+
+    	// Array für leerer Typ
+    	$empty = ( is_null( $event['type'] ) ) ? 0 : 1;
+    	$key = array_search( $event['short_name'], array_column( $events_emptytype[$empty]["children"], 'name' ) );
+    	
+    	if( $key === false ) {
+    		$events_emptytype[$empty]["children"][] = array(
+				"name" => $event['short_name'],
+				"count" => 0,
+				"children" => array(),
+				"events" => array()
+			);
+    	}
+    	
+    	$key = array_search( $event['short_name'], array_column( $events_emptytype[$empty]["children"], 'name' ) );
+
+    	$events_emptytype[$empty]["children"][$key]["events"][] = $event;
+    	$events_emptytype[$empty]["count"] += 1;
+    	$events_emptytype[$empty]["children"][$key]["count"] += 1;
+    }
+
+
+
+
+    // Auswertung Blocktypen
+    $events_blocktype_tree = array();
+
+    foreach ($events_blocktype as $event) {
+    	if( !is_null( $event['event']['type'] ) ) {
+    		$events_blocktype_tree = addTreeToArray( $event['tree'], $event['event'], $events_blocktype_tree );
+    	}
+    }
+
+	$_js_env->add( 'events_blocktype_tree', $events_blocktype_tree );
+
+
+
+
+	// Auswertung leerer Typ
+	$_js_env->add( 'events_emptytype', $events_emptytype );
+
+
+
+
+	function getParents( $type, $children ) {
+		$arr = array(
+			"id" => $type,
+			"children" => $children
+		);
+		
+		$query = "SELECT * FROM event_types WHERE id=$type";
+		$type = mysql_fetch_assoc( mysql_query( $query ) );
+
+		if( is_null( $type['child_of'] ) ) {
+			return $arr;
+		} else {
+			return getParents( $type['child_of'], $arr );
+		}
+	}
+
+
+
+
+	function addTreeToArray( $tree, $event, $array ) {
+		$key = array_search( $tree['id'], array_column( $array, 'id' ) );
+		if( $key === false ) {
+			$query = "SELECT name FROM event_types WHERE id=" . $tree['id'];
+			$result = mysql_fetch_assoc( mysql_query( $query ) );
+
+			$array[] = array(
+				"id" => $tree['id'],
+				"name" => $result['name'],
+				"count" => 0,
+				"children" => array(),
+				"events" => array()
+			);
+			$key = array_search( $tree['id'], array_column( $array, 'id' ) );
+		}
+
+		$array[$key]['count'] += 1;
+
+		if( is_null( $tree['children'] ) ) {
+			$array[$key]['events'][] = $event;
+			return $array;
+		} else {
+			$array[$key]['children'] = addTreeToArray( $tree['children'], $event, $array[$key]['children'] );
+			return $array;
+		}
+	}
+
+
 ?>

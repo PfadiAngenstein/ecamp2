@@ -35,6 +35,7 @@ $js  = array(
 				"mootools-more-1.4.js" 		=> "global",
 				"dynamic_input.js" 	=> "global",
 				"other.js" 			=> "global",
+				"select_type.js" 	=> "global",
 				"event.js" 			=> "module",
 				"home.js" 			=> "app",
 				"popup.js" 			=> "global"

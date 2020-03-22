@@ -26,6 +26,7 @@ $security_level = array(
 						);
 
 $css = array(
+				"chart.min.css"				=> "app",
 				"home.css" 					=> "app"
 			);
 
@@ -34,8 +35,11 @@ $js  = array(
 				"mootools-more-1.4.js" 		=> "global",
 				"dynamic_input.js"			=> "global",
 				"other.js" 					=> "global",
+				"select_type.js" 			=> "global",
+				"popup.js" 					=> "global",
 				"event.js" 					=> "module",
-				"popup.js" 					=> "global"
+				"chart.min.js"				=> "app",
+				"home.js"					=> "app"
 			);
 
 

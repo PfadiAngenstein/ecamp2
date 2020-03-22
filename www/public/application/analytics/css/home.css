@@ -11,3 +11,42 @@
 	padding-left: 13px;
 }
 
+div.chart_box_wrapper {
+	overflow: hidden;
+}
+
+div.chart_box {
+	width: 50%;
+	height: 300px;
+	float: left;
+}
+
+div.chart_wrapper {
+	overflow: hidden;
+}
+
+div.chart_breadcrumbs {
+	min-height: 20px;
+}
+div.chart_breadcrumbs button {
+	margin-right: 5px;
+}
+
+div.chart_container {
+	float: left;
+	min-width: 500px;
+}
+
+div.chart_eventlist_wrapper {
+	float: left;
+}
+
+div.chart_eventlist_wrapper div {
+	max-height: 210px;
+	max-width: 240px;
+	overflow: auto;
+}
+div.chart_eventlist_wrapper ul {
+	padding-left: 30px;
+}
+

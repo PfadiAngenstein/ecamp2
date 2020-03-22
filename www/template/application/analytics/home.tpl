@@ -3,6 +3,8 @@
 							<tr><td align="left">
                                     <div align="left">Hier werden einige Analysedaten des Lagers aufbereitet.<br />
                                       <br />
+                                      <br />
+                                      <br />
                                     </div>
                             </td></tr>
                         </table>
@@ -54,5 +56,50 @@
 									</tal:block>
 								</tr>
 							</table>
+						</div>
+						<br />
+						<br />
+						<br />
+						<br />
+
+
+
+
+						<br />
+						<br />
+						<div class="chart_box_wrapper">
+							<div class="chart_box">
+								<b>Auswertung Blockinhalte</b>
+								<br />
+								<br />
+								<div class="chart_wrapper">
+									<div id="chart_blocktypes_empty" class="hidden">Kein Block wurde einem Typ zugewiesen. Bitte nachholen!</div>
+									<div id="chart_blocktypes_breadcrumbs" class="chart_breadcrumbs"></div>
+									<div class="chart_container">
+										<canvas id="chart_blocktypes">Kuchendiagramm kann nicht angezeigt werden. Bitte anderen Browser verwenden.</canvas>
+									</div>
+									<div class="chart_eventlist_wrapper">
+										<b>Blöcke:</b><br />
+										Typ: <span id="chart_blocktypes_eventlist_type">-</span>
+										<div><ul id="chart_blocktypes_eventlist"></ul></div>
+									</div>
+								</div>
+							</div>
+							<div class="chart_box">
+								<b>Kategorisierte Blöcke</b>
+								<br />
+								<br />
+								<div class="chart_wrapper">
+									<div id="chart_emptytypes_breadcrumbs" class="chart_breadcrumbs"></div>
+									<div class="chart_container">
+										<canvas id="chart_emptytype">Kuchendiagramm kann nicht angezeigt werden. Bitte anderen Browser verwenden.</canvas>
+									</div>
+									<div class="chart_eventlist_wrapper">
+										<b>Blöcke:</b><br />
+										Typ: <span id="chart_emptytypes_eventlist_type">-</span>
+										<div><ul id="chart_emptytypes_eventlist"></ul></div>
+									</div>
+								</div>
+							</div>
 						</div>
 </span>
