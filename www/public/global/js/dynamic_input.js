@@ -694,12 +694,16 @@ var DI_TEXTAREA = new Class({
 		this.edit_div.addClass( 'hidden' );
 		this.wait_div.removeClass( 'hidden' );
 		
-		url = this.options.args.set( this.show_input.get('name'), this.edit_input.get('value') );
-		url = this.options.save_url + url.toQueryString();
-				
+		url = this.options.save_url + this.options.args.toQueryString();
+
+		var dataArray = {};
+		dataArray[this.show_input.get('name')] = this.edit_input.get('value');
+
 		new Request.JSON(
 		{
 			url: url, 
+			method: 'post',
+			data: dataArray,
 			onComplete: this.change.bind(this)
 		}).send();
 	},
