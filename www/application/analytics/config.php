@@ -22,7 +22,7 @@
 # Sichheitslevel der einzelnen Aktionen/Dateien
 # --> Kommandos/Files die nicht aufgeührt sind, können nicht aufgerufen werden
 $security_level = array( 
-				'home' 						=> 50, 
+				'home' 						=> 20, 
 						);
 
 $css = array(

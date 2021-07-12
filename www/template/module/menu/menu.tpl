@@ -72,11 +72,9 @@
                 <a href="index.php?app=story" tal:attributes="class php: app=='story'?'actual_menu':''">Roter Faden</a><br />
 	        </div>
 
-            <tal:block condition="php: user_camp.auth_level >= 50">
-                <div class="menu_group">
-                    <a href="index.php?app=analytics" tal:attributes="class php: app=='analytics'?'actual_menu':''">Analyse</a><br />
-                </div>
-            </tal:block>
+            <div class="menu_group">
+                <a href="index.php?app=analytics" tal:attributes="class php: app=='analytics'?'actual_menu':''">Analyse</a><br />
+            </div>
 	        
             <div class="menu_group">
 		        <a href="index.php?app=my_resp" tal:attributes="class php: app=='my_resp'?'actual_menu':''">Meine Verantwortung</a><br />
