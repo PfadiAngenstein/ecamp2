@@ -116,6 +116,9 @@
 			}
 		}
 
+		if($start_lunch == 0) { $start_lunch = 720; $length_lunch = 60; }		// 12:00 - 13:00
+		if($start_dinner == 0) { $start_dinner = 720; $length_dinner = 60; }	// 18:00 - 19:00
+
 		$total_ls = 0;
 		$total_la = 0;
 		$num_events_morning = 0;
