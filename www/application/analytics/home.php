@@ -101,10 +101,13 @@
 
 		while( $event = mysql_fetch_assoc($result_event) ) {
 			if( $event['category_id'] == $category_es ) {
-				$start_lunch = $start_dinner;
-				$length_lunch = $length_dinner;
-				$start_dinner = $event['starttime'];
-				$length_dinner = $event['length'];
+				if($event['starttime'] >= 660 && $event['starttime'] <= 900) { // between 11:00 and 15:00
+					$start_lunch = $event['starttime'];
+					$length_lunch = $event['length'];
+				} else {
+					$start_dinner = $event['starttime'];
+					$length_dinner = $event['length'];
+				}
 			} else {
 				if( 
 					// LS und LS min. 30min laut J+S
